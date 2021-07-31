@@ -1,8 +1,10 @@
 <template>
-  <SideNavigation />
-  <div class="home">
-    <br>
-    <p class="primary-color"> PROFILE </p>
+  <div class="flex">
+    <SideNavigation />
+    <div class="home flex-auto">
+      <br />
+      <p class="primary-color">PROFILE</p>
+    </div>
   </div>
 </template>
 
@@ -12,12 +14,10 @@ import SideNavigation from "@/components/SideNavigation.vue";
 export default {
   name: "Profile",
   components: {
-    SideNavigation
-  }, 
+    SideNavigation,
+  },
 };
-
 </script>
 
 <style>
-  
 </style>
