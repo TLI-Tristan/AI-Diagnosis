@@ -1,10 +1,8 @@
 <template>
-  <div class="flex">
-    <SideNavigation />
-    <div class="home flex-auto">
-      <br />
-      <p class="primary-color">PROFILE</p>
-    </div>
+  <SideNavigation />
+  <div class="m">
+    <p class="primary-color mt-5 text-2xl font-bold">PROFILE</p>
+    <p> rest </p>
   </div>
 </template>
 

@@ -14,6 +14,12 @@ module.exports = {
       "warn",
       {
         printWidth: 180,  // default = 80
+      },
+    ],
+    'prettier/prettier': [
+      'error',
+      {
+        'endOfLine': 'disabled',
       }
     ]
   },
