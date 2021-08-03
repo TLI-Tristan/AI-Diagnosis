@@ -6,7 +6,7 @@
 
     <div class="flex flex-col h-screen" v-if="navBarOpened">
       <div class="block flex flex-row items-center justify-center text-left">
-        <span class="ml-8 py-5 text-2xl flex-1">Hoona</span>
+        <span class="ml-8 py-5 text-2xl flex-1 cursor-default">Hoona</span>
         <span class="flex mr-2"> <a class="w-5 h-5 m-3 cursor-pointer" @click="toggleSideNav"><img class="" src="../assets/close.svg" /></a></span>
       </div>
       <hr>
@@ -22,7 +22,7 @@
         </li>
         <li>
           <div class="py-3">
-            <p class="text-gray-400 px-4 pt-5">DIAGNOSIS</p>
+            <p class="text-gray-400 px-4 pt-5 cursor-default">DIAGNOSIS</p>
           </div>
         </li>
         <hr>

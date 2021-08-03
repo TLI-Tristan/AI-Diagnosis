@@ -16,11 +16,5 @@ module.exports = {
         printWidth: 180,  // default = 80
       },
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        'endOfLine': 'disabled',
-      }
-    ]
   },
 };

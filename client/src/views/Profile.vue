@@ -2,7 +2,7 @@
   <SideNavigation />
   <div class="m">
     <p class="primary-color mt-5 text-2xl font-bold">PROFILE</p>
-    <p> rest </p>
+    <p>rest</p>
   </div>
 </template>
 
@@ -17,5 +17,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
