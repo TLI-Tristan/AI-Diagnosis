@@ -5,6 +5,7 @@ import BrainTumor from "../views/BrainTumor.vue";
 import Stroke from "../views/Stroke.vue";
 import Heart from "../views/Heart.vue";
 import BrainTumorReport from "../views/BrainTumorReport.vue";
+import ReportList from "../views/ReportList.vue";
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     name: "BrainTumorReport",
     component: BrainTumorReport,
     props: true,
+  },
+  {
+    path: "/reportlist",
+    name: "ReportList",
+    component: ReportList,
   },
 ];
 

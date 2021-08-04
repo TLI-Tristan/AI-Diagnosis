@@ -50,6 +50,14 @@
             </router-link>
           </div>
         </li>
+         <li>
+          <div class="">
+            <router-link to="/ReportList" class="block py-4 hover:bg-blue-700 px-6 flex flex-row items-center">
+              <span class="w-8 h-8"><img class="" src="../assets/report.svg" /></span>
+              <span class="ml-2">Report</span>
+            </router-link>
+          </div>
+        </li>
       </ul>
       </div>
       <div class="">
