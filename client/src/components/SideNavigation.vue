@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen secondary-background-color primary-color flex-none fixed top-0 z-50 transition-all duration-100 ease-in-out" :class="{ ['w-80'] : navBarOpened, ['w-12'] : !navBarOpened }">
+  <div class="h-screen secondary-background-color primary-color flex-none fixed top-0 z-50 transition-all duration-200 ease-in-out" :class="{ ['w-80'] : navBarOpened, ['w-12'] : !navBarOpened }">
     <div class="flex flex-row mt-5 items-center justify-center  cursor-pointer" v-if="!navBarOpened">
       <a class="w-6 h-6" @click="toggleSideNav"><img class="" src="../assets/menu.svg" /></a>
     </div>

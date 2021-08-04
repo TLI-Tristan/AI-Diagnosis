@@ -17,7 +17,7 @@
   <p>password: {{password}}</p> -->
 
   <div class="w-full max-w-xs mx-auto">
-    <h1 class="primary-color my-4 text-3xl"> Hoona </h1>
+    <h1 class="primary-color my-4 text-3xl text-center"> Hoona </h1>
     <form @submit.prevent="submitForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h1 class="mb-5 text-lg">Staff Login</h1>
       <div class="mb-4">
@@ -48,8 +48,8 @@
     <p class="text-center text-gray-500 text-xs">&copy;2021 Hoona Group. All rights reserved.</p>
   </div>
 
-  <p class="text-red-300">login_id: {{login_id}}</p>
-  <p class="text-red-300">password: {{password}}</p>
+  <p class="text-red-300 text-center">login_id: {{login_id}}</p>
+  <p class="text-red-300 text-center">password: {{password}}</p>
 </template>
 
 <script>

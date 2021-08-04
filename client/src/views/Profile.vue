@@ -1,6 +1,6 @@
 <template>
   <SideNavigation />
-  <div class="m">
+  <div class="">
     <p class="primary-color mt-5 text-2xl font-bold">PROFILE</p>
     <p>rest</p>
   </div>

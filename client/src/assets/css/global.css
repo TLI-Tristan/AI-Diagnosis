@@ -28,6 +28,10 @@ body{
     color: #007CC7;
 }
 
+.primary-action-color-bg{
+    background: #007CC7;
+}
+
 .secondary-action-color{
     color: #4DA8DA;
 }

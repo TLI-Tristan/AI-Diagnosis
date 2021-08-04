@@ -11,7 +11,10 @@ import cv2 as cv
 import io
 from flask import send_file
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 model = tf.keras.models.load_model('static/model/brain_tumor_segmentation_model_v5')
 

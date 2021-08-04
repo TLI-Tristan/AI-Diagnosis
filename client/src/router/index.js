@@ -4,6 +4,7 @@ import Profile from "../views/Profile.vue";
 import BrainTumor from "../views/BrainTumor.vue";
 import Stroke from "../views/Stroke.vue";
 import Heart from "../views/Heart.vue";
+import BrainTumorReport from "../views/BrainTumorReport.vue";
 
 const routes = [
   {
@@ -30,6 +31,12 @@ const routes = [
     path: "/heart",
     name: "Heart",
     component: Heart,
+  },
+  {
+    path: "/braintumor/report/:patientid",
+    name: "BrainTumorReport",
+    component: BrainTumorReport,
+    props: true,
   },
 ];
 
