@@ -1,7 +1,7 @@
 <template>
   <SideNavigation />
   <div class="ml-12">
-    <div class="grid grid-cols-12 divide-x h-screen">
+    <div class="grid grid-cols-12 divide-x h-screen overflow-hidden">
       <div class="col-span-2">
         <!--
         <div class="flex fle-row text-white text-center divide-x border">
@@ -24,7 +24,13 @@
 
           <div class="overflow-y-scroll">
             <ul>
-              <li v-bind:key="patient" v-for="patient in searchResultPatientList" class="hover:bg-blue-700 cursor-default" :class="{'bg-blue-700': (patient.patient_id == selectedCase)}" @click="patientSelect($event, patient)">
+              <li
+                v-bind:key="patient"
+                v-for="patient in searchResultPatientList"
+                class="hover:bg-blue-700 cursor-default"
+                :class="{ 'bg-blue-700': patient.patient_id == selectedCase }"
+                @click="patientSelect($event, patient)"
+              >
                 <div class="m-1 secondary-background-color">
                   <p class="text-lg p-2">{{ patient.patient_id }}</p>
                   <div class="text-sm p-2">
@@ -60,10 +66,25 @@
               <p>Segemented Tumor</p>
             </div>
 
-            <div class="absolute font-normal text-sm pl-1" style="color: rgb(255, 0, 0)">&#9632; Meningioma</div>
-            <div class="absolute font-normal text-sm pl-1 pt-5" style="color: rgb(0, 255, 0)">&#9632; Giloma</div>
-            <div class="absolute font-normal text-sm pl-1 pt-10" style="color: rgb(0, 0, 255)">&#9632; Pituitary</div>
-            <div>
+            <div v-if="loaded" class="absolute font-normal text-sm pl-1" style="color: rgb(255, 0, 0)">&#9632; Meningioma</div>
+            <div v-if="loaded" class="absolute font-normal text-sm pl-1 pt-5" style="color: rgb(0, 255, 0)">&#9632; Giloma</div>
+            <div v-if="loaded" class="absolute font-normal text-sm pl-1 pt-10" style="color: rgb(0, 0, 255)">&#9632; Pituitary</div>
+            <div v-if="!loaded" class="h-full w-full items-center grid justify-items-center">
+              <div class="">
+                <div class="breeding-rhombus-spinner">
+                  <div class="rhombus child-1"></div>
+                  <div class="rhombus child-2"></div>
+                  <div class="rhombus child-3"></div>
+                  <div class="rhombus child-4"></div>
+                  <div class="rhombus child-5"></div>
+                  <div class="rhombus child-6"></div>
+                  <div class="rhombus child-7"></div>
+                  <div class="rhombus child-8"></div>
+                  <div class="rhombus big"></div>
+                </div>
+              </div>
+            </div>
+            <div v-if="loaded">
               <img class="object-contain w-full h-full" :src="toggleActive ? currentOverlayImage : currentSegementedImage" />
             </div>
           </div>
@@ -102,6 +123,7 @@ export default {
   name: "BrainTumor",
   data() {
     return {
+      loaded: false,
       selectedCase: "",
       currentTumorImage: "",
       currentSegementedImage: "",
@@ -182,6 +204,7 @@ export default {
                   .then((response) => response.blob())
                   .then((blob) => {
                     this.currentSegementedImage = URL.createObjectURL(blob);
+                    this.loaded = true;
                   });
                 fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
                   method: "GET",
@@ -218,7 +241,9 @@ export default {
         .then((response) => response.blob())
         .then((blob) => {
           this.currentSegementedImage = URL.createObjectURL(blob);
-        }).catch((error) => console.log("error", error));
+          this.loaded = true;
+        })
+        .catch((error) => console.log("error", error));
 
       fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + imageName, {
         method: "GET",
@@ -226,23 +251,27 @@ export default {
         .then((response) => response.blob())
         .then((blob) => {
           this.currentOverlayImage = URL.createObjectURL(blob);
-        }).catch((error) => console.log("error", error));
+        })
+        .catch((error) => console.log("error", error));
     },
     increment() {
       if (this.currentImageIndex < this.imageLength) {
         this.currentImageIndex += 1;
+        this.loaded = false;
         this.getAllImages();
       }
     },
     decrement() {
       if (this.currentImageIndex > 1) {
         this.currentImageIndex -= 1;
+        this.loaded = false;
         this.getAllImages();
       }
     },
     patientSelect(e, patient) {
       //console.log(patient);
       console.log(patient.patient_id);
+      this.loaded = false;
       this.selectedCase = patient.patient_id;
       if (this.currentPatientID != patient.patient_id) {
         this.currentPatientID = patient.patient_id;
@@ -274,6 +303,7 @@ export default {
                   .then((response) => response.blob())
                   .then((blob) => {
                     this.currentSegementedImage = URL.createObjectURL(blob);
+                    this.loaded = true;
                   });
 
                 fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
@@ -331,5 +361,137 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #326485;
+}
+
+.breeding-rhombus-spinner {
+  height: 65px;
+  width: 65px;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.breeding-rhombus-spinner,
+.breeding-rhombus-spinner * {
+  box-sizing: border-box;
+}
+
+.breeding-rhombus-spinner .rhombus {
+  height: calc(65px / 7.5);
+  width: calc(65px / 7.5);
+  animation-duration: 2000ms;
+  top: calc(65px / 2.3077);
+  left: calc(65px / 2.3077);
+  background-color: #ff1d5e;
+  position: absolute;
+  animation-iteration-count: infinite;
+}
+
+.breeding-rhombus-spinner .rhombus:nth-child(2n + 0) {
+  margin-right: 0;
+}
+
+.breeding-rhombus-spinner .rhombus.child-1 {
+  animation-name: breeding-rhombus-spinner-animation-child-1;
+  animation-delay: calc(100ms * 1);
+}
+
+.breeding-rhombus-spinner .rhombus.child-2 {
+  animation-name: breeding-rhombus-spinner-animation-child-2;
+  animation-delay: calc(100ms * 2);
+}
+
+.breeding-rhombus-spinner .rhombus.child-3 {
+  animation-name: breeding-rhombus-spinner-animation-child-3;
+  animation-delay: calc(100ms * 3);
+}
+
+.breeding-rhombus-spinner .rhombus.child-4 {
+  animation-name: breeding-rhombus-spinner-animation-child-4;
+  animation-delay: calc(100ms * 4);
+}
+
+.breeding-rhombus-spinner .rhombus.child-5 {
+  animation-name: breeding-rhombus-spinner-animation-child-5;
+  animation-delay: calc(100ms * 5);
+}
+
+.breeding-rhombus-spinner .rhombus.child-6 {
+  animation-name: breeding-rhombus-spinner-animation-child-6;
+  animation-delay: calc(100ms * 6);
+}
+
+.breeding-rhombus-spinner .rhombus.child-7 {
+  animation-name: breeding-rhombus-spinner-animation-child-7;
+  animation-delay: calc(100ms * 7);
+}
+
+.breeding-rhombus-spinner .rhombus.child-8 {
+  animation-name: breeding-rhombus-spinner-animation-child-8;
+  animation-delay: calc(100ms * 8);
+}
+
+.breeding-rhombus-spinner .rhombus.big {
+  height: calc(65px / 3);
+  width: calc(65px / 3);
+  animation-duration: 2000ms;
+  top: calc(65px / 3);
+  left: calc(65px / 3);
+  background-color: #ff1d5e;
+  animation: breeding-rhombus-spinner-animation-child-big 2s infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-1 {
+  50% {
+    transform: translate(-325%, -325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-2 {
+  50% {
+    transform: translate(0, -325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-3 {
+  50% {
+    transform: translate(325%, -325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-4 {
+  50% {
+    transform: translate(325%, 0);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-5 {
+  50% {
+    transform: translate(325%, 325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-6 {
+  50% {
+    transform: translate(0, 325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-7 {
+  50% {
+    transform: translate(-325%, 325%);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-8 {
+  50% {
+    transform: translate(-325%, 0);
+  }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-big {
+  50% {
+    transform: scale(0.5);
+  }
 }
 </style>

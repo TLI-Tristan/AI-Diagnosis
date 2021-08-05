@@ -124,6 +124,14 @@ app.get("/getCaseData/:patient_id", (req, res, next) => {
   res.send(patient_list[patient_id]);
 });
 
+app.get("/getReportList", (req, res, next) => {
+
+  res.setHeader("Content-Type", "application/json");
+  let report_list_raw = fs.readFileSync("temp_data/report_list.json");
+  let report_list = JSON.parse(report_list_raw);
+  res.send(report_list);
+});
+
 /*
 app.get("/test2", (req, res, next) => {
   var filename = "dfffff.png";
