@@ -148,6 +148,7 @@ export default {
 
         var firstPatient = this.patientList[0].patient_id;
         this.currentPatientID = firstPatient;
+        this.selectedCase = firstPatient;
         console.log("first patient is: " + firstPatient);
       })
       .then(() => {

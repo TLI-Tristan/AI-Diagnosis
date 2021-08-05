@@ -19,5 +19,11 @@
         "tumor_type": "test3",
         "findings": "test5",
         "treatment": "test6"
+    },
+    {
+        "patientid": "5755555155",
+        "tumor_type": "giloma",
+        "findings": "test3",
+        "treatment": "test8"
     }
 ]
