@@ -1,29 +1,20 @@
 [
     {
-        "tumor_type": 1,
-        "findings": "3/8/2021",
-        "treatment": "Edward Jenner"
-    },
-    {
-        "patientid": "5351545457",
-        "findings": "test4",
-        "treatment": "test6"
-    },
-    {
-        "patientid": "5351545457",
-        "findings": "test5",
-        "treatment": "test78"
-    },
-    {
         "patientid": "5351545457",
         "tumor_type": "test3",
-        "findings": "test5",
-        "treatment": "test6"
+        "findings": "Findings1",
+        "treatment": "Surgery recommended"
     },
     {
         "patientid": "5755555155",
         "tumor_type": "giloma",
-        "findings": "test3",
-        "treatment": "test8"
+        "findings": "It's stage 3 cancer",
+        "treatment": "N/A"
+    },
+    {
+        "patientid": "5351545457",
+        "tumor_type": "giloma",
+        "findings": "stage 2 cancer",
+        "treatment": "N/A"
     }
 ]

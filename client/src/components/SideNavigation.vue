@@ -14,7 +14,7 @@
         <ul class="flex flex-col text-left items-stretch">
         <li class="w-full">
           <div class="">
-          <router-link to="/braintumor" class="block py-4 hover:bg-blue-700 px-6 flex flex-row items-center">
+          <router-link to="/profile" class="block py-4 hover:bg-blue-700 px-6 flex flex-row items-center">
               <span class="w-8 h-8"><img class="" src="../assets/home.svg" /></span>
               <span class="ml-2">Home</span>
             </router-link>
