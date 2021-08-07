@@ -58,8 +58,8 @@ app.get("/getSegmentation/:patient_id/:file_name", (req, res, next) => {
 
   var options = {
     method: "POST",
-    //url: "http://127.0.0.1:5000/predictImage?file",
-    url: "http://it3100-180512b-ai-diagnosis-project.southeastasia.azurecontainer.io/predictImage?file",
+    url: "http://127.0.0.1:5000/predictImage?file",
+    //url: "http://it3100-180512b-ai-diagnosis-project.southeastasia.azurecontainer.io/predictImage?file",
     encoding: null,
     headers: {},
     formData: {
@@ -91,8 +91,8 @@ app.get("/getOverlaySegmentation/:patient_id/:file_name", (req, res, next) => {
 
   var options = {
     method: "POST",
-    //url: "http://127.0.0.1:5000/predictImageWithOverlay?file",
-    url: "http://it3100-180512b-ai-diagnosis-project.southeastasia.azurecontainer.io/predictImageWithOverlay?file",
+    url: "http://127.0.0.1:5000/predictImageWithOverlay?file",
+    //url: "http://it3100-180512b-ai-diagnosis-project.southeastasia.azurecontainer.io/predictImageWithOverlay?file",
     encoding: null,
     headers: {},
     formData: {
