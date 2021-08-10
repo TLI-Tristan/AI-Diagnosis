@@ -51,7 +51,7 @@ export default {
     SideNavigation,
   },
   mounted() {
-    fetch("http://127.0.0.1:3000/getReportList", {
+    fetch("http://127.0.0.1:3000/mri/getReportList", {
       method: "GET",
     })
       .then((response) => response.json())

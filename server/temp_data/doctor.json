@@ -1,0 +1,26 @@
+[
+    {
+        "doctor_id": 1,
+        "doctor_name": "Edward Jenner",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_contact": "83545829"
+    },
+    {
+        "doctor_id": 2,
+        "doctor_name": "Alex Lim",
+        "doctor_email": "alexlim@mgh.com",
+        "doctor_contact": "98595323"
+    },
+    {
+        "doctor_id": 3,
+        "doctor_name": "Jamus Lim",
+        "doctor_email": "jamuslim@mgh.com",
+        "doctor_contact": "83935827"
+    },
+    {
+        "doctor_id": 4,
+        "doctor_name": "Jean Warren",
+        "doctor_email": "jeanwarren@mgh.com",
+        "doctor_contact": "97815322"
+    }
+]

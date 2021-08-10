@@ -160,7 +160,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://127.0.0.1:3000/getPatientList", {
+    fetch("http://127.0.0.1:3000/mri/getPatientList", {
       method: "GET",
     })
       .then((response) => response.json())
@@ -176,47 +176,7 @@ export default {
       .then(() => {
         console.log(this.currentPatientID);
 
-        fetch("http://127.0.0.1:3000/getPatientImageFileNames/" + this.currentPatientID, {
-          method: "GET",
-        })
-          .then((response) => response.json())
-          .then((response) => {
-            //console.log(response);
-            this.imageList = response;
-            this.imageLength = response.length;
-            this.currentImageIndex = 1;
-            //console.log("length of image list: " + this.imageLength);
-            return this.imageList[0];
-          })
-          .then((image_name) => {
-            console.log(image_name);
-            fetch("http://127.0.0.1:3000/getImageFile/" + this.currentPatientID + "/" + image_name, {
-              method: "GET",
-            })
-              .then((response) => response.blob())
-              .then((blob) => {
-                this.currentTumorImage = URL.createObjectURL(blob);
-              })
-              .then(() => {
-                fetch("http://127.0.0.1:3000/getSegmentation/" + this.currentPatientID + "/" + image_name, {
-                  method: "GET",
-                })
-                  .then((response) => response.blob())
-                  .then((blob) => {
-                    this.currentSegementedImage = URL.createObjectURL(blob);
-                    this.loaded = true;
-                  });
-                fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
-                  method: "GET",
-                })
-                  .then((response) => response.blob())
-                  .then((blob) => {
-                    this.currentOverlayImage = URL.createObjectURL(blob);
-                  });
-              })
-              .catch((error) => console.log("error", error));
-          })
-          .catch((error) => console.log("error", error));
+        this.loadSelectionData();
       })
       .catch((error) => console.log("error", error));
   },
@@ -226,7 +186,7 @@ export default {
   methods: {
     getAllImages() {
       var imageName = this.imageList[this.currentImageIndex - 1];
-      fetch("http://127.0.0.1:3000/getImageFile/" + this.currentPatientID + "/" + imageName, {
+      fetch("http://127.0.0.1:3000/mri/getImageFile/" + this.currentPatientID + "/" + imageName, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -235,7 +195,7 @@ export default {
         })
         .catch((error) => console.log("error", error));
 
-      fetch("http://127.0.0.1:3000/getSegmentation/" + this.currentPatientID + "/" + imageName, {
+      fetch("http://127.0.0.1:3000/mri/getSegmentation/" + this.currentPatientID + "/" + imageName, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -245,7 +205,7 @@ export default {
         })
         .catch((error) => console.log("error", error));
 
-      fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + imageName, {
+      fetch("http://127.0.0.1:3000/mri/getOverlaySegmentation/" + this.currentPatientID + "/" + imageName, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -268,6 +228,50 @@ export default {
         this.getAllImages();
       }
     },
+    loadSelectionData() {
+      fetch("http://127.0.0.1:3000/mri/getPatientImageFileNames/" + this.currentPatientID, {
+        method: "GET",
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          //console.log(response);
+          this.imageList = response;
+          this.imageLength = response.length;
+          this.currentImageIndex = 1;
+          console.log("length of image list: " + this.imageLength);
+          return this.imageList[0];
+        })
+        .then((image_name) => {
+          console.log(image_name);
+          fetch("http://127.0.0.1:3000/mri/getImageFile/" + this.currentPatientID + "/" + image_name, {
+            method: "GET",
+          })
+            .then((response) => response.blob())
+            .then((blob) => {
+              this.currentTumorImage = URL.createObjectURL(blob);
+            })
+            .then(() => {
+              fetch("http://127.0.0.1:3000/mri/getSegmentation/" + this.currentPatientID + "/" + image_name, {
+                method: "GET",
+              })
+                .then((response) => response.blob())
+                .then((blob) => {
+                  this.currentSegementedImage = URL.createObjectURL(blob);
+                  this.loaded = true;
+                });
+
+              fetch("http://127.0.0.1:3000/mri/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
+                method: "GET",
+              })
+                .then((response) => response.blob())
+                .then((blob) => {
+                  this.currentOverlayImage = URL.createObjectURL(blob);
+                });
+            })
+            .catch((error) => console.log("error", error));
+        })
+        .catch((error) => console.log("error", error));
+    },
     patientSelect(e, patient) {
       //console.log(patient);
       console.log(patient.patient_id);
@@ -275,48 +279,7 @@ export default {
       this.selectedCase = patient.patient_id;
       if (this.currentPatientID != patient.patient_id) {
         this.currentPatientID = patient.patient_id;
-        fetch("http://127.0.0.1:3000/getPatientImageFileNames/" + this.currentPatientID, {
-          method: "GET",
-        })
-          .then((response) => response.json())
-          .then((response) => {
-            //console.log(response);
-            this.imageList = response;
-            this.imageLength = response.length;
-            this.currentImageIndex = 1;
-            console.log("length of image list: " + this.imageLength);
-            return this.imageList[0];
-          })
-          .then((image_name) => {
-            console.log(image_name);
-            fetch("http://127.0.0.1:3000/getImageFile/" + this.currentPatientID + "/" + image_name, {
-              method: "GET",
-            })
-              .then((response) => response.blob())
-              .then((blob) => {
-                this.currentTumorImage = URL.createObjectURL(blob);
-              })
-              .then(() => {
-                fetch("http://127.0.0.1:3000/getSegmentation/" + this.currentPatientID + "/" + image_name, {
-                  method: "GET",
-                })
-                  .then((response) => response.blob())
-                  .then((blob) => {
-                    this.currentSegementedImage = URL.createObjectURL(blob);
-                    this.loaded = true;
-                  });
-
-                fetch("http://127.0.0.1:3000/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
-                  method: "GET",
-                })
-                  .then((response) => response.blob())
-                  .then((blob) => {
-                    this.currentOverlayImage = URL.createObjectURL(blob);
-                  });
-              })
-              .catch((error) => console.log("error", error));
-          })
-          .catch((error) => console.log("error", error));
+        this.loadSelectionData();
       }
     },
     writeReport() {
