@@ -63,6 +63,18 @@ const medicalReportsSchema = new Schema({
     medical_image: {
         type: Array,
         required: true
+    },
+    tumor_type: {
+        type: String,
+        required: true
+    },
+    findings: {
+        type: String,
+        required: true
+    },
+    treatment: {
+        type: String,
+        required: true
     }
 
 }, { timestamps: true });

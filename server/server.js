@@ -9,6 +9,7 @@ const app = express();
 
 // routes
 const mriRoute = require("./routes/mri_route");
+const mainRoute = require("./routes/main_route");
 
 // env variables
 const hostname = "127.0.0.1";
@@ -24,6 +25,7 @@ app.use(
 
 app.use(cors());
 
+app.use("/", mainRoute);
 app.use("/mri", mriRoute);
 
 // conntect to mongodb
@@ -39,6 +41,6 @@ mongoose
   })
   .catch((err) => console.log(err));*/
 
-  app.listen(PORT, () => {
-    console.log(`Server running at http://${hostname}:${PORT}/`);
-  });
+app.listen(PORT, () => {
+  console.log(`Server running at http://${hostname}:${PORT}/`);
+});

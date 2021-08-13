@@ -6,6 +6,7 @@ import Stroke from "../views/Stroke.vue";
 import Heart from "../views/Heart.vue";
 import BrainTumorReport from "../views/BrainTumorReport.vue";
 import ReportList from "../views/ReportList.vue";
+import Report from "../views/Report.vue";
 
 const routes = [
   {
@@ -43,6 +44,12 @@ const routes = [
     path: "/reportlist",
     name: "ReportList",
     component: ReportList,
+  },
+  {
+    path: "/report/:patientid",
+    name: "Report",
+    component: Report,
+    props: true,
   },
 ];
 

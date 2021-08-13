@@ -34,6 +34,7 @@
                 <div class="m-1 secondary-background-color">
                   <p class="text-lg p-2">{{ patient.patient_id }}</p>
                   <div class="text-sm p-2">
+                    <p class="">Patient name: {{ patient.patient_name }}</p>
                     <p class="">Priority level: {{ patient.priority }}</p>
                     <p class="">Date Requested: {{ patient.date }}</p>
                   </div>
@@ -171,10 +172,9 @@ export default {
         var firstPatient = this.patientList[0].patient_id;
         this.currentPatientID = firstPatient;
         this.selectedCase = firstPatient;
-        console.log("first patient is: " + firstPatient);
+        console.log("first patient on the list is: " + firstPatient);
       })
       .then(() => {
-        console.log(this.currentPatientID);
 
         this.loadSelectionData();
       })
@@ -242,7 +242,7 @@ export default {
           return this.imageList[0];
         })
         .then((image_name) => {
-          console.log(image_name);
+          console.log("first image is: " + image_name);
           fetch("http://127.0.0.1:3000/mri/getImageFile/" + this.currentPatientID + "/" + image_name, {
             method: "GET",
           })
@@ -297,7 +297,7 @@ export default {
   computed: {
     searchResultPatientList() {
       if (this.searchQuery != null) {
-        return this.patientList.filter((patient) => patient.patient_id.includes(this.searchQuery));
+        return this.patientList.filter((patient) => patient.patient_id.includes(this.searchQuery) || patient.patient_name.toLowerCase().includes(this.searchQuery.toLowerCase()));
       } else {
         return this.patientList;
       }

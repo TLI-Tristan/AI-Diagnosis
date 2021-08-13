@@ -1,0 +1,14 @@
+[
+  {
+    "login_id": "admin",
+    "password": "12345"
+  },
+  {
+    "login_id": "doctor",
+    "password": "12345"
+  },
+  {
+    "login_id": "edwardjenner",
+    "password": "12345"
+  }
+]
