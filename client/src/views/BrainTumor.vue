@@ -163,6 +163,9 @@ export default {
   mounted() {
     fetch("http://127.0.0.1:3000/mri/getPatientList", {
       method: "GET",
+      headers: {
+        "authorization": this.$store.getters.getToken,
+      },
     })
       .then((response) => response.json())
       .then((response) => {

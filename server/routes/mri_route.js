@@ -5,8 +5,9 @@ const request = require("request");
 const MedicalReports = require("../models/medical_reports");
 const PatientRecords = require("../models/patient_records");
 const path = require("path");
+const auth = require("../middleware/auth");
 
-router.get("/getPatientList", (req, res, next) => {
+router.get("/getPatientList", auth, (req, res, next) => {
   // local retrieve
 
   // res.setHeader("Content-Type", "application/json");
@@ -185,14 +186,35 @@ router.post("/addNewReport", (req, res, next) => {
     .save()
     .then((result) => {
       console.log(result);
+
+      PatientRecords.deleteOne({ patient_id: req.body.patient_id })
+        .then((result) => {})
+        .catch((err) => console.log(err));
+      res.send("finish");
     })
     .catch((err) => console.log(err));
-
-  PatientRecords.deleteOne({ patient_id: req.body.patient_id })
-    .then((result) => {})
-    .catch((err) => console.log(err));
-
-  res.send("finish");
 });
+
+/*
+router.get("/newacc", (req, res, next) => {
+
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
+      const newStaffaccount = new StaffAccount({
+        login_id: "edwardjenner",
+        password: hash,
+        salt: salt,
+      });
+    
+      newStaffaccount
+        .save()
+        .then((result) => {
+          console.log(result);
+          res.send("finish");
+        })
+        .catch((err) => console.log(err));
+    });
+  });
+});*/
 
 module.exports = router;

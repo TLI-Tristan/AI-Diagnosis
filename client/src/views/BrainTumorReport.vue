@@ -3,8 +3,16 @@
   <div class="ml-12">
     <div class="grid grid-cols-12 h-screen w-full">
       <div class="col-span-4 w-full flex flex-col px-8 pt-6 pb-8 mb-4">
-        <div class="flex items-center justify-center mb-1">
-          <img class="object-contain w-full h-full" :src="toggleActive ? imageOverlay : image" />
+        <div class="w-full mb-4 text-white">
+          <button @click="navigateToPatientList">&#60; Back To Patient List</button>
+        </div>
+        <div>
+          <div v-if="toggleActive" class="absolute font-normal text-sm pl-1" style="color: rgb(255, 0, 0)">&#9632; Meningioma</div>
+          <div v-if="toggleActive" class="absolute font-normal text-sm pl-1 pt-5" style="color: rgb(0, 255, 0)">&#9632; Giloma</div>
+          <div v-if="toggleActive" class="absolute font-normal text-sm pl-1 pt-10" style="color: rgb(0, 0, 255)">&#9632; Pituitary</div>
+          <div class="flex items-center justify-center mb-1">
+            <img class="object-contain w-full h-full" :src="toggleActive ? imageOverlay : image" />
+          </div>
         </div>
 
         <div class="w-full col-span-2 mb-3">
@@ -118,45 +126,55 @@ export default {
     };
   },
   methods: {
+    navigateToPatientList() {
+      this.$router.push({
+        name: "BrainTumor",
+      });
+    },
     handleSubmit() {
       if (this.treatment == "" || this.findings == "" || this.tumorType == "") {
         this.showError = true;
-        this.errorMessage = "All fields must not be empty."
+        this.errorMessage = "All fields must not be empty.";
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      }
-      
-      console.log(this.imageList);
-      fetch("http://127.0.0.1:3000/mri/addNewReport", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          patient_id: this.patientid,
-          tumor_type: this.tumorType,
-          findings: this.findings,
-          treatment: this.treatment,
-          date: this.date,
-          doctor_contact: this.doctorContact,
-          doctor_email: this.doctorEmail,
-          doctor_name: this.doctorName,
-          priority: this.priority,
-          NRIC: this.NRIC,
-          height: this.height,
-          weight: this.weight,
-          blood_type: this.blood_type,
-          race: this.race,
-          allergies: this.allergies,
-          medical_history: this.medical_history,
-          patient_name: this.patient_name,
-          medical_image: this.imageList,
-        }),
-      })
-        .then((response) => console.log(response))
-        .catch((error) => console.log("error", error));
+      } else {
+        console.log(this.imageList);
 
-      this.$router.push({ name: "BrainTumor" });
+        fetch("http://127.0.0.1:3000/mri/addNewReport", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            patient_id: this.patientid,
+            tumor_type: this.tumorType,
+            findings: this.findings,
+            treatment: this.treatment,
+            date: this.date,
+            doctor_contact: this.doctorContact,
+            doctor_email: this.doctorEmail,
+            doctor_name: this.doctorName,
+            priority: this.priority,
+            NRIC: this.NRIC,
+            height: this.height,
+            weight: this.weight,
+            blood_type: this.blood_type,
+            race: this.race,
+            allergies: this.allergies,
+            medical_history: this.medical_history,
+            patient_name: this.patient_name,
+            medical_image: this.imageList,
+          }),
+        })
+          .then((response) => {
+            console.log(response);
+            this.$router.push({ name: "BrainTumor" });
+          })
+          .catch((error) => {
+            console.log("error", error);
+            this.showError = true;
+          });
+      }
     },
     increment() {
       if (this.currentImageIndex < this.imageLength) {

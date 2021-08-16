@@ -2,7 +2,7 @@
   <SideNavigation />
   <div class="ml-12">
     <div class="grid grid-cols-12 h-screen w-full">
-      <div class="col-span-4 w-full flex flex-col px-8 pt-6 pb-8 mb-4">
+      <div class="col-span-6 w-full flex flex-col px-8 pt-6 pb-8 mb-4">
         <div class="w-full mb-4 text-white">
           <button @click="navigateToReportList">&#60; Back To Report List</button>
         </div>
@@ -49,12 +49,15 @@
         </div>
       </div>
 
-      <div class="col-span-8 text-white px-8 pt-6 pb-8 mb-4 h-full justify-between">
+      <div class="col-span-6 text-white px-8 pt-6 pb-8 mb-4 h-full justify-between">
         <div class="w-full h-full flex flex-col">
           <div>
             <p class="primary-action-color text-6xl mb-5 font-bold text-left">Clinical Report #{{ patientid }}</p>
           </div>
-          <div class="mb-1 flex-grow flex items-center justify-center mb-2">
+          <div class="mb-1 flex-grow mb-2">
+            <div v-if="toggleActive" class="absolute font-normal text-sm pl-1" style="color: rgb(255, 0, 0)">&#9632; Meningioma</div>
+            <div v-if="toggleActive" class="absolute font-normal text-sm pl-1 pt-5" style="color: rgb(0, 255, 0)">&#9632; Giloma</div>
+            <div v-if="toggleActive" class="absolute font-normal text-sm pl-1 pt-10" style="color: rgb(0, 0, 255)">&#9632; Pituitary</div>
             <img class="object-contain min-h-full" :src="toggleActive ? imageOverlay : image" />
           </div>
 

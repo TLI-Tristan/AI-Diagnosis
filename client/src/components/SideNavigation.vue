@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: "SideNavigation",
   components: {},
@@ -82,11 +83,12 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["setToken"]),
     logoutHandling() {
       console.log("logout press");
       // <router-link to="/login">Login</router-link>
       // clear data to prevent back navigation
-
+      this.setToken(null);
       this.$router.push({ name: "Login" });
     },
     toggleSideNav() {
