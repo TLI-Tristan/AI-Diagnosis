@@ -8,6 +8,12 @@ import BrainTumorReport from "../views/BrainTumorReport.vue";
 import ReportList from "../views/ReportList.vue";
 import Report from "../views/Report.vue";
 import store from "../store";
+import Heart2 from "../views/Heart2.vue";
+import Heart3 from "../views/Heart3.vue";
+import HeartPredicted from "../views/HeartPredicted.vue";
+import HeartReport from "../views/HeartReport.vue";
+import ThankYou from "../views/ThankYou.vue";
+import Recent from "../views/Recent.vue";
 
 const routes = [
   {
@@ -60,6 +66,42 @@ const routes = [
     meta: { restricted: true },
     component: Report,
     props: true,
+  },
+  {
+    path: "/heart2",
+    name: "Heart2",
+    meta: { restricted: false },
+    component: Heart2,
+  },
+  {
+    path: "/heart3",
+    name: "Heart3",
+    meta: { restricted: false },
+    component: Heart3,
+  },
+  {
+    path: "/heartpredicted",
+    name: "HeartPredicted",
+    meta: { restricted: false },
+    component: HeartPredicted,
+  },
+  {
+    path: "/heartreport",
+    name: "HeartReport",
+    meta: { restricted: false },
+    component: HeartReport,
+  },
+  {
+    path: "/thankyou",
+    name: "ThankYou",
+    meta: { restricted: false },
+    component: ThankYou,
+  },
+  {
+    path: "/recent",
+    name: "Recent",
+    meta: { restricted: false },
+    component: Recent,
   },
 ];
 
