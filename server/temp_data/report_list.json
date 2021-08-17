@@ -358,5 +358,52 @@
         "medical_image": [
             "5750565755_1"
         ]
+    },
+    {
+        "patient_id": "5656545548",
+        "tumor_type": "Giloma",
+        "findings": "Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000002D",
+        "height": "177",
+        "weight": "69",
+        "blood_type": "AB+",
+        "race": "Chinese",
+        "allergies": "grass",
+        "medical_history": "N/A",
+        "patient_name": "Gina Ball",
+        "medical_image": [
+            "5656545548_1",
+            "5656545548_2"
+        ]
+    },
+    {
+        "patient_id": "5748505652",
+        "tumor_type": "Test",
+        "findings": "test",
+        "treatment": "test",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000003D",
+        "height": "159",
+        "weight": "59",
+        "blood_type": "B-",
+        "race": "Eurasian",
+        "allergies": "grass",
+        "medical_history": "N/A",
+        "patient_name": "Kirk Torres",
+        "medical_image": [
+            "5748505652_1",
+            "5748505652_2",
+            "5748505652_3"
+        ]
     }
 ]

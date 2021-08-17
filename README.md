@@ -1,24 +1,25 @@
-# client
+# Client
 
-## Project setup
+### Client setup
 ```
+cd client
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
+# Server
+
+### Server setup
 ```
-npm run build
+cd server
+npm install
+npm start
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+# API
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### API setup
+```
+cd api/HuiFengAPI
+python BrainTumorSegmentation.py
+```

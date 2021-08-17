@@ -4,10 +4,6 @@
     <div class="grid grid-cols-12 h-screen w-full">
       <div class="col-span-8 text-white px-8 pt-6 pb-8 mb-4 h-full justify-between">
         <div class="">
-          <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-2" role="alert" v-if="showError">
-            <p class="font-bold">Warning</p>
-            <p>{{ errorMessage }}</p>
-          </div>
 
           <p class="primary-action-color text-6xl mb-10 font-bold text-left">Patient Details</p>
           <div class="text-left mb-10">
@@ -109,36 +105,9 @@ export default {
         !this.bmi ||
         !this.smoking_status
       ) {
-        this.showError = true;
-        this.errorMessage = "All fields must not be empty.";
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        this.$router.push({ name: "Stroke" });
       }
 
-      fetch("http://127.0.0.1:3000/addNewPatient", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: this.name,
-          gender: this.gender,
-          age: this.age,
-          hypertension: this.hypertension,
-          heart_disease: this.heart_disease,
-          ever_married: this.ever_married,
-          avg_glucose_level: this.avg_glucose_level,
-          bmi: this.bmi,
-          smoking_status: this.smoking_status,
-        }),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => console.log("error", error));
-
-      this.$router.push({ name: "Stroke" });
     },
   },
   components: {

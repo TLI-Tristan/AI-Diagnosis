@@ -211,7 +211,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .column {
   float: left;
   width: 25%;
