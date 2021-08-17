@@ -261,7 +261,8 @@ export default {
                 .then((blob) => {
                   this.currentSegementedImage = URL.createObjectURL(blob);
                   this.loaded = true;
-                });
+                })
+                .catch((error) => console.log("error", error));
 
               fetch("http://127.0.0.1:3000/mri/getOverlaySegmentation/" + this.currentPatientID + "/" + image_name, {
                 method: "GET",
@@ -269,7 +270,8 @@ export default {
                 .then((response) => response.blob())
                 .then((blob) => {
                   this.currentOverlayImage = URL.createObjectURL(blob);
-                });
+                })
+                .catch((error) => console.log("error", error));
             })
             .catch((error) => console.log("error", error));
         })

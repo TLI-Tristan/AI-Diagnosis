@@ -1,5 +1,5 @@
 <template>
-  <side-navigation/>
+  <side-navigation />
   <div class="ml-12">
     <div class="grid grid-cols-12 h-screen w-full">
       <div class="col-span-4 w-full flex flex-col px-8 pt-6 pb-8 mb-4">
@@ -34,7 +34,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="col-span-8 text-white px-8 pt-6 pb-8 mb-4 h-full justify-between">
@@ -62,31 +61,28 @@
               <button class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded" @click="SubmitDetails">Submit</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
-import SideNavigation from '../components/SideNavigation.vue';
+import SideNavigation from "../components/SideNavigation.vue";
 export default {
   name: "StrokeDetails",
 
-  methods:{
-    navigateToList(){
-    this.$router.push('/Stroke'); 
+  methods: {
+    navigateToList() {
+      this.$router.push("/Stroke");
     },
-    SubmitDetails(){
-      this.$router.push('/Stroke')
-    }
+    SubmitDetails() {
+      this.$router.push("/Stroke");
+    },
   },
 
   components: {
-    SideNavigation
-      
+    SideNavigation,
   },
 };
 </script>

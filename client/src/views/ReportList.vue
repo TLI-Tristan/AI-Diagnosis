@@ -1,7 +1,7 @@
 <template>
   <SideNavigation />
   <div class="">
-    <p class="primary-color mt-5 text-2xl font-bold text-center">Medical Report List</p>
+    <p class="primary-color mt-5 text-2xl font-bold text-center">MRI Report List</p>
   </div>
   <div class="text-white ml-12 p-4">
     <table class="min-w-full">

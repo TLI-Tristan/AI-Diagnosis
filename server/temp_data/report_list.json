@@ -178,5 +178,185 @@
             "5755555155_2",
             "5755555155_3"
         ]
+    },
+    {
+        "patient_id": "5756525550",
+        "tumor_type": "Pituitary",
+        "findings": "Small Tumor",
+        "treatment": "Surgery will do",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000020D",
+        "height": "196",
+        "weight": "45",
+        "blood_type": "O-",
+        "race": "Eurasian",
+        "allergies": "egg",
+        "medical_history": "N/A",
+        "patient_name": "Frank Lee",
+        "medical_image": [
+            "5756525550_1",
+            "5756525550_2"
+        ]
+    },
+    {
+        "patient_id": "5755565748",
+        "tumor_type": "Pituitary",
+        "findings": "Small Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000017D",
+        "height": "156",
+        "weight": "69",
+        "blood_type": "A+",
+        "race": "Malay",
+        "allergies": "grass",
+        "medical_history": "N/A",
+        "patient_name": "Linda Escarcega",
+        "medical_image": [
+            "5755565748_1",
+            "5755565748_2",
+            "5755565748_3"
+        ]
+    },
+    {
+        "patient_id": "5753495250",
+        "tumor_type": "Giloma",
+        "findings": "Small Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000007D",
+        "height": "163",
+        "weight": "49",
+        "blood_type": "O-",
+        "race": "Chinese",
+        "allergies": "fur",
+        "medical_history": "N/A",
+        "patient_name": "Thomas Hanna",
+        "medical_image": [
+            "5753495250_1"
+        ]
+    },
+    {
+        "patient_id": "5757485657",
+        "tumor_type": "Meningioma",
+        "findings": "Top of brain",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000027D",
+        "height": "165",
+        "weight": "50",
+        "blood_type": "AB+",
+        "race": "Chinese",
+        "allergies": "N/A",
+        "medical_history": "N/A",
+        "patient_name": "Calvin Bautista",
+        "medical_image": [
+            "5757485657_1",
+            "5757485657_2"
+        ]
+    },
+    {
+        "patient_id": "5757505656",
+        "tumor_type": "Pituitary",
+        "findings": "Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000029D",
+        "height": "180",
+        "weight": "72",
+        "blood_type": "O+",
+        "race": "Malay",
+        "allergies": "peanut",
+        "medical_history": "N/A",
+        "patient_name": "Roy Battle",
+        "medical_image": [
+            "5757505656_1"
+        ]
+    },
+    {
+        "patient_id": "5755565553",
+        "tumor_type": "Meningioma",
+        "findings": "Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000016D",
+        "height": "173",
+        "weight": "70",
+        "blood_type": "AB+",
+        "race": "Malay",
+        "allergies": "egg",
+        "medical_history": "N/A",
+        "patient_name": "Gene Brian",
+        "medical_image": [
+            "5755565553_1"
+        ]
+    },
+    {
+        "patient_id": "5755525649",
+        "tumor_type": "Pituitary",
+        "findings": "Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000011D",
+        "height": "173",
+        "weight": "54",
+        "blood_type": "B-",
+        "race": "Malay",
+        "allergies": "milk",
+        "medical_history": "N/A",
+        "patient_name": "Rick Moman",
+        "medical_image": [
+            "5755525649_1"
+        ]
+    },
+    {
+        "patient_id": "5750565755",
+        "tumor_type": "Giloma",
+        "findings": "Small Tumor",
+        "treatment": "Surgery",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000004D",
+        "height": "162",
+        "weight": "65",
+        "blood_type": "A+",
+        "race": "Eurasian",
+        "allergies": "peanut",
+        "medical_history": "N/A",
+        "patient_name": "Eugene Miller",
+        "medical_image": [
+            "5750565755_1"
+        ]
     }
 ]

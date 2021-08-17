@@ -69,8 +69,8 @@ router.post("/refreshToken", (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.secret);
     req.user = decoded.user_id;
-    console.log("decoded");
-    console.log(decoded);
+    //console.log("decoded");
+    //console.log(decoded);
     const new_token = jwt.sign({ user_id: req.user }, process.env.secret, {
       //expiresIn: "2h",
       expiresIn: "30000",
