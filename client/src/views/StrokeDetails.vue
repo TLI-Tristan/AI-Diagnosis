@@ -1,5 +1,5 @@
 <template>
-  <side-navigation />
+  <side-navigation/>
   <div class="ml-12">
     <div class="grid grid-cols-12 h-screen w-full">
       <div class="col-span-4 w-full flex flex-col px-8 pt-6 pb-8 mb-4">
@@ -9,17 +9,18 @@
         <div class="w-full flex items-center justify-center">
           <div class="w-full secondary-background-color content-center primary-color p-5">
             <p class="text-2xl mb-4">Case Information</p>
-            <div class="grid grid-cols-1 divide-y divide-yellow-500">
-              <p>Name: {{ name }}</p>
-              <p>Gender: {{ gender }}</p>
-              <p>Age: {{ age }}</p>
-              <p>History of hypertension: {{ hypertension }}</p>
-              <p>History of heart disease: {{ heart_disease }}</p>
-              <p>Martial status: {{ ever_married }}</p>
-              <p>Average Glucose Level: {{ avg_glucose_level }}</p>
-              <p>BMI: {{ bmi }}</p>
-              <p>Smoking status: {{ smoking_status }}</p>
-              <p>Allergies: {{ allergies }}</p>
+            <div class="grid grid-cols-1 divide-y divide-yellow-500" v-bind:key="StrokePatient" v-for="StrokePatient in StrokePatient">
+              <p>Name: {{ StrokePatient.name }}</p>
+              <p>Gender: {{ StrokePatient.gender }}</p>
+              <p>Age: {{ StrokePatient.age }}</p>
+              <p>History of hypertension: {{ StrokePatient.hypertension }}</p>
+              <p>History of heart disease: {{ StrokePatient.heart_disease }}</p>
+              <p>Martial status: {{ StrokePatient.ever_married }}</p>
+              <p>Average Glucose Level: {{ StrokePatient.avg_glucose_level }}</p>
+              <p>BMI: {{ StrokePatient.bmi }}</p>
+              <p>Smoking status: {{ StrokePatient.smoking_status }}</p>
+              <p>Allergies: {{ StrokePatient.allergies }}</p>
+              <p>Chance of Stroke: {{StrokePatient.strokeChance}}</p>
             </div>
           </div>
         </div>
@@ -27,13 +28,14 @@
         <div class="w-full flex items-center justify-center mt-4">
           <div class="w-full secondary-background-color content-center primary-color p-5">
             <p class="text-2xl mb-4">Doctor Information</p>
-            <div class="grid grid-cols-1 divide-y divide-yellow-500">
-              <p>Doctor's Name: {{ doctorName }}</p>
-              <p>Doctor's Email: {{ doctorEmail }}</p>
-              <p>Doctor's Contact: {{ doctorContact }}</p>
+            <div class="grid grid-cols-1 divide-y divide-yellow-500" v-bind:key="StrokeDoctor" v-for="StrokeDoctor in StrokeDoctor">
+              <p>Doctor's Name: {{ StrokeDoctor.doctorName }}</p>
+              <p>Doctor's Email: {{ StrokeDoctor.doctorEmail }}</p>
+              <p>Doctor's Contact: {{ StrokeDoctor.doctorContact }}</p>
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="col-span-8 text-white px-8 pt-6 pb-8 mb-4 h-full justify-between">
@@ -57,32 +59,42 @@
                 <textarea class="w-full resize-none border rounded-md background-color primary-color" v-model="actions" rows="5" type="text" id="actions"></textarea>
               </div>
             </div>
-            <div class="text-right">
+            <div class="text-center">
               <button class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded" @click="SubmitDetails">Submit</button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
-import SideNavigation from "../components/SideNavigation.vue";
+import SideNavigation from '../components/SideNavigation.vue';
 export default {
   name: "StrokeDetails",
 
-  methods: {
-    navigateToList() {
-      this.$router.push("/Stroke");
+  methods:{
+    navigateToList(){
+    this.$router.push('/Stroke'); 
     },
-    SubmitDetails() {
-      this.$router.push("/Stroke");
-    },
+    SubmitDetails(){
+      this.$router.push('/Stroke')
+    }
+  },
+
+  data() {
+    return {
+      StrokePatient: [ { name: "Alex", gender: "Male", age: "60", hypertension:"Yes", heart_disease:"No", ever_married:"Yes", avg_glucose_level:"120mg/dL", bmi:"35", smoking_status:"Never smoked", allergies:"None", strokeChance: "65%" }, ],
+      StrokeDoctor: [ { doctorName: "John", doctorEmail: "JohnDoe@email.com", doctorContact: "62546578", } ]
+    };
   },
 
   components: {
-    SideNavigation,
+    SideNavigation
+      
   },
 };
 </script>
