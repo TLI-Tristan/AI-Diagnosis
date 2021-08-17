@@ -8,6 +8,7 @@
       <thead>
         <tr>
           <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Patient ID</th>
+          <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Patient Name</th>
           <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Tumor Type</th>
           <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Findings</th>
           <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Treatments</th>
@@ -20,11 +21,10 @@
         <tr v-bind:key="report" v-for="report in searchResultReportList">
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
             <div class="flex items-center">
-              <div>
-                <div class="text-sm leading-5 primary-color">{{ report.patient_id }}</div>
-              </div>
+              <div class="text-sm leading-5 primary-color">{{ report.patient_id }}</div>
             </div>
           </td>
+          <td class="px-6 py-4 whitespace-no-wrap border-b primary-color border-gray-500 text-sm leading-5">{{ report.patient_name }}</td>
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
             <div class="text-sm leading-5 primary-color">{{ report.tumor_type }}</div>
           </td>
@@ -83,7 +83,10 @@ export default {
     searchResultReportList() {
       if (this.searchQuery != null) {
         return this.reportList.filter(
-          (report) => report.patient_id.toLowerCase().includes(this.searchQuery.toLowerCase()) || report.tumor_type.toLowerCase().includes(this.searchQuery.toLowerCase())
+          (report) =>
+            report.patient_id.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            report.tumor_type.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            report.patient_name.toLowerCase().includes(this.searchQuery.toLowerCase())
         );
       } else {
         return this.reportList;

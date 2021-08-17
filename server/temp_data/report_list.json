@@ -154,5 +154,29 @@
             "5755524954_1",
             "5755524954_2"
         ]
+    },
+    {
+        "patient_id": "5755555155",
+        "tumor_type": "Meningioma",
+        "findings": "Large tumor that is not in critical position of the brain",
+        "treatment": "Surgery recommended, with high chance of success",
+        "date": "3/8/2021",
+        "doctor_contact": "83545829",
+        "doctor_email": "edwardjenner@mgh.com",
+        "doctor_name": "Edward Jenner",
+        "priority": 1,
+        "NRIC": "S0000015D",
+        "height": "195",
+        "weight": "77",
+        "blood_type": "A+",
+        "race": "Chinese",
+        "allergies": "fur",
+        "medical_history": "N/A",
+        "patient_name": "Lilia Murphy",
+        "medical_image": [
+            "5755555155_1",
+            "5755555155_2",
+            "5755555155_3"
+        ]
     }
 ]
